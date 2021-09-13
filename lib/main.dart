@@ -1,47 +1,56 @@
 import 'package:flutter/material.dart';
+
 void main() {
-  runApp(jomshedaliApp());
+  runApp(johirul());
 }
-class jomshedaliApp extends StatelessWidget {
+
+class johirul extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
+          leading: Icon(Icons.agriculture),
           actions: [
-            Icon(Icons.account_balance_rounded),
+            Icon(Icons.agriculture),
+            Icon(Icons.agriculture),
+            Text("Text")
           ],
-          leading: Icon(Icons.account_balance_rounded),
-          centerTitle: true,
-          title: Text(" AppBar Title"),
-          backgroundColor: Colors.deepOrangeAccent,
+          title: Text("Batch -02"),
         ),
         body: SafeArea(
-            child: Center(
-              child: Container(
+            child: ListView(
+          children: [
+            Container(
                 height: 200,
-                width: 300,
-                color: Colors.purple,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Center(
-                    child: Text('Bangladesh, to the east of India on the Bay of Bengal, is a South Asian country marked by lush greenery and many waterways.Its Padma (Ganges), Meghna and Jamuna rivers create fertile plains, and travel by boat is common.On the southern coast, the Sundarbans, an enormous mangrove forest shared with Eastern India, is home to the royal Bengal tiger',
+                width: 200,
+                color: Colors.brown,
+                child: Text(
+                  "Mobile apps development",
+                  style: TextStyle(fontSize: 24),
+                )),
+            Container(
+                height: 200,
+                width: 50,
+                color: Colors.deepOrange,
+                child: Text("Mobile apps development",
+                    style: TextStyle(fontSize: 24))),
+          Align(
+            alignment: Alignment.bottomRight,
+            child: Container(
+              width: 200.0,
+              height: 150.0,
+                color: Colors.deepPurple,
+                child: Text("Mobile apps development",
+                    style: TextStyle(fontSize: 24))
+              /*decoration:
+              BoxDecoration(shape: BoxShape.circle, color: Colors.red),*/
+            ),
+          )
 
-                      style: TextStyle(fontSize: 20,color: Colors.purple,backgroundColor: Colors.blue),),
-                  ),
-                ),
-              ),
-            )
-
-              /*Center(
-                child: Text('Bangladesh, to the east of India on the Bay of Bengal, is a South Asian country marked by lush greenery and many waterways.Its Padma (Ganges), Meghna and Jamuna rivers create fertile plains, and travel by boat is common.On the southern coast, the Sundarbans, an enormous mangrove forest shared with Eastern India, is home to the royal Bengal tiger',
-
-                  style: TextStyle(fontSize: 20,color: Colors.purple,backgroundColor: Colors.blue),),
-              ),*/
-            )
-        ),
-     // ),
+          ],
+        )),
+      ),
     );
   }
 }
