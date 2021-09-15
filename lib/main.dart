@@ -1,56 +1,94 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(johirul());
+void main(){
+  runApp(himel());
 }
-
-class johirul extends StatelessWidget {
+class himel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          leading: Icon(Icons.agriculture),
-          actions: [
-            Icon(Icons.agriculture),
-            Icon(Icons.agriculture),
-            Text("Text")
-          ],
-          title: Text("Batch -02"),
-        ),
-        body: SafeArea(
-            child: ListView(
-          children: [
-            Container(
-                height: 200,
-                width: 200,
-                color: Colors.brown,
-                child: Text(
-                  "Mobile apps development",
-                  style: TextStyle(fontSize: 24),
-                )),
-            Container(
-                height: 200,
-                width: 50,
-                color: Colors.deepOrange,
-                child: Text("Mobile apps development",
-                    style: TextStyle(fontSize: 24))),
-          Align(
-            alignment: Alignment.bottomRight,
-            child: Container(
-              width: 200.0,
-              height: 150.0,
-                color: Colors.deepPurple,
-                child: Text("Mobile apps development",
-                    style: TextStyle(fontSize: 24))
-              /*decoration:
-              BoxDecoration(shape: BoxShape.circle, color: Colors.red),*/
-            ),
-          )
+      debugShowCheckedModeBanner: false,
+      home: SecondPage()
 
-          ],
-        )),
-      ),
+      //Thirdpage()
+
     );
   }
 }
+class SecondPage extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          leading: Icon(Icons.agriculture),
+          actions: [Icon(Icons.agriculture)],
+
+          title: Text("Batch -002"),
+          centerTitle: true,
+        ),
+        body: ListView(
+          children: [
+            Container(
+              color: Colors.cyan,
+              height: 200,
+              child: Center(child: Text("mobile App development",style: TextStyle(fontSize: 24),)),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(18.0),
+              child: Container(
+                  color: Colors.brown,
+                  height: 200,
+                  child: Text("batch 2")),
+            ),
+            Align(
+              alignment: Alignment.centerRight,
+              child:
+              Container(color: Colors.deepOrangeAccent,
+                  height: 200,
+                  width: 300,
+                  child: Text("manik kumar")),
+            ),
+            Align(
+              alignment: Alignment.centerRight,
+              child:
+              Container(color: Colors.deepPurple,
+                  height: 200,
+                  width: 300,
+                  child: Text("manik kumar")),
+            ),
+
+            ElevatedButton(
+                onPressed: (){
+                  print("Button press done ");
+                  Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Thirdpage()),);
+                },
+                child: Text("Push me"))
+
+          ],
+        )
+    );
+  }
+}
+
+class Thirdpage extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: ListView(children: [
+            Center(
+            child: Text("Third Page",style: TextStyle(fontSize: 30),)),
+        ElevatedButton(
+            onPressed: (){
+              print("Button press done ");
+              Navigator.push(context,
+                MaterialPageRoute(builder: (context) => SecondPage()),);
+            },
+            child: Text("Back me"))
+          ]),
+    );
+  }
+}
+
