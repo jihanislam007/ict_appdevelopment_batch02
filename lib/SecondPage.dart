@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:ict_appdevelopment_batch02/main.dart';
 
+import 'ImageLoad/PracticeImage.dart';
 import 'ThirdPage.dart';
 
 class SecondPage extends StatelessWidget {
@@ -24,13 +25,22 @@ class SecondPage extends StatelessWidget {
               child: Container(
                   height: 200,
                   color: Colors.deepOrangeAccent,
-                  child: Center(child: Text("Jomshed Ali"))),
+                  child: Center(child: Text("Jomshed Ali",
+                  style: TextStyle(fontWeight : FontWeight.bold),))),
             ),
             Text("Jomshed Ali",style: TextStyle(fontSize: 32),),
 
             ElevatedButton(onPressed: (){
               Navigator.push(context, MaterialPageRoute(builder: (context)=> Thirdpage()));
-            }, child: Text("Button"))
+            }, child: Text("Button")),
+
+            Container(
+              child: ElevatedButton(
+                  onPressed: (){
+                print("pressed done");
+                Navigator.push(context, MaterialPageRoute(builder: (context) => PracticeImage()));
+              }, child: Text("Image Load")),
+            )
           ],
         ))
       //)
