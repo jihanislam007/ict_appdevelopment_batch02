@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 import 'SecondPage.dart';
 
-
 void main(){
   runApp(MyApp());
 }
@@ -19,7 +18,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-
-
-

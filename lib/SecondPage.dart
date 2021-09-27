@@ -5,6 +5,9 @@ import 'package:ict_appdevelopment_batch02/main.dart';
 
 import 'Calculator.dart';
 import 'ImageLoad/PracticeImage.dart';
+import 'LiquidSwifts.dart';
+import 'ListTile.dart';
+import 'StackPosition.dart';
 import 'ThirdPage.dart';
 
 class SecondPage extends StatelessWidget {
@@ -55,13 +58,10 @@ class SecondPage extends StatelessWidget {
                           builder: (context) => SingleChildScrollViews()));
                 },
                 child: Text("Single Child Scrollview")),
-
             ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => Calculator()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Calculator()));
                 },
                 child: Text("Calculator")),
             Container(
@@ -74,7 +74,32 @@ class SecondPage extends StatelessWidget {
                             builder: (context) => PracticeImage()));
                   },
                   child: Text("Image Load")),
-            )
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  print("pressed done");
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => ListTiles()));
+                },
+                child: Text("List Tile")),
+            ElevatedButton(
+                onPressed: () {
+                  print("pressed done");
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => StackPosiotion()));
+                },
+                child: Text("Stack Position")),
+            ElevatedButton(
+                onPressed: () {
+                  print("pressed done");
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => LiquidSweept()));
+                },
+                child: Text("liquid swipe")),
           ],
         ))
         //)
