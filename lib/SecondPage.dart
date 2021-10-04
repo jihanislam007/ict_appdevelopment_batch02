@@ -6,6 +6,7 @@ import 'package:ict_appdevelopment_batch02/main.dart';
 
 import 'Calculator.dart';
 import 'Cards.dart';
+import 'Gridviews.dart';
 import 'ImageLoad/PracticeImage.dart';
 import 'LiquidSwifts.dart';
 import 'ListTile.dart';
@@ -104,6 +105,16 @@ class SecondPage extends StatelessWidget {
                             builder: (context) => LiquidSweept()));
                   },
                   child: Text("liquid swipe")),
+
+            ElevatedButton(
+                  onPressed: () {
+                    print("pressed done");
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Gridviews()));
+                  },
+                  child: Text("Grid view")),
 
             ElevatedButton(
                   onPressed: () {
