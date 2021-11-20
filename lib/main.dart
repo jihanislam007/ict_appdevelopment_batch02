@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ict_appdevelopment_batch02/railSheba/rail.dart';
 
 import 'LiquidSwifts.dart';
 import 'SecondPage.dart';
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SecondPage(),
+      home: rail(),
          // LiquidSweept()
 
     );

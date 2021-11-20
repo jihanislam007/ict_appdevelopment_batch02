@@ -26,7 +26,7 @@ class SecondPage extends StatelessWidget {
             children: const <Widget>[
               DrawerHeader(
                 decoration: BoxDecoration(
-                  color: Colors.blue,
+                  color: Colors.red,
                 ),
                 child: Text(
                   'Drawer Header',
