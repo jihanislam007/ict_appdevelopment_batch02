@@ -2,6 +2,7 @@ import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ict_appdevelopment_batch02/Auth/signup.dart';
 import 'package:ict_appdevelopment_batch02/SecondPage.dart';
 
 class login extends StatelessWidget {
@@ -9,7 +10,6 @@ class login extends StatelessWidget {
   TextEditingController passController = TextEditingController();
 
   String user = 'mobile';
-
   String pass = '2345';
 
   @override
@@ -37,7 +37,8 @@ class login extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextField(
-                  controller: usernameController,
+                  keyboardType: TextInputType.phone,
+                  //controller: usernameController,
                   decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: 'User Name',
@@ -121,10 +122,15 @@ class login extends StatelessWidget {
               SizedBox(
                 height: 40,
               ),
-              Text('Have an account? Sign up',
-                  style: GoogleFonts.rubik(
-                      textStyle:
-                          TextStyle(color: Color(0xFFFF0FFF), fontSize: 16)))
+              InkWell(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => signup()));
+                },
+                child: Text('Have an account? Sign up',
+                    style: GoogleFonts.rubik(
+                        textStyle:
+                            TextStyle(color: Color(0xFFFF0FFF), fontSize: 16))),
+              )
             ],
           ),
         ),
