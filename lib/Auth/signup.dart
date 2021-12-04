@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import 'login.dart';
 
 class signup extends StatefulWidget {
   @override
@@ -10,6 +13,9 @@ class signup extends StatefulWidget {
 class _signupState extends State<signup> {
   DateTime? _dateTime;
   int radioValue =0;
+
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController passController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -21,11 +27,26 @@ class _signupState extends State<signup> {
               padding: const EdgeInsets.all(8.0),
               child: TextField(
                 keyboardType: TextInputType.phone,
-                //controller: usernameController,
+                controller: usernameController,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'User Name',
                     hintText: 'Enter your Name',
+                    icon: Icon(
+                      Icons.account_box_outlined,
+                      size: 50,
+                    )),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                obscureText: true,
+                controller: passController,
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'password',
+                    hintText: 'Enter your password',
                     icon: Icon(
                       Icons.account_box_outlined,
                       size: 50,
@@ -110,7 +131,9 @@ class _signupState extends State<signup> {
                   color: Color(0xFFDF2424)),
               child: TextButton(
                   onPressed: () {
-                    Fluttertoast.showToast(msg: radioValue.toString(),toastLength: Toast.LENGTH_LONG) ;
+                    setShaPref();
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>login()));
+                    //Fluttertoast.showToast(msg: radioValue.toString(),toastLength: Toast.LENGTH_LONG) ;
                   },
                   child: Text('Submit',
                       style: GoogleFonts.rubik(
@@ -136,4 +159,14 @@ class _signupState extends State<signup> {
       _dateTime = date;
     });
   }
+
+  setShaPref() async{
+
+    final pref = await SharedPreferences.getInstance();
+
+    pref.setString('user_name', usernameController.text);
+    pref.setString('pass', passController.text);
+
+  }
+
 }

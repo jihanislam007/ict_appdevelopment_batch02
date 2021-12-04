@@ -2,15 +2,30 @@ import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ict_appdevelopment_batch02/Auth/profile.dart';
 import 'package:ict_appdevelopment_batch02/Auth/signup.dart';
 import 'package:ict_appdevelopment_batch02/SecondPage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class login extends StatelessWidget {
+class login extends StatefulWidget {
+  @override
+  _loginState createState() => _loginState();
+}
+
+class _loginState extends State<login> {
   TextEditingController usernameController = TextEditingController();
+
   TextEditingController passController = TextEditingController();
 
-  String user = 'mobile';
-  String pass = '2345';
+  String user_name = '';
+  String pass = '';
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    getsharpref();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +84,10 @@ class login extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.only(right: 20),
                   child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => profile()));
+                      },
                       child: Text(
                         'Forgot password',
                         style: GoogleFonts.rubik(
@@ -96,7 +114,7 @@ class login extends StatelessWidget {
                             gravity: ToastGravity.SNACKBAR,
                             backgroundColor: Colors.amberAccent,
                             textColor: Colors.pink);
-                      } else if (usernameController.text == user &&
+                      } else if (usernameController.text == user_name &&
                           passController.text == pass) {
                         Fluttertoast.showToast(
                             msg: 'Login sucessful',
@@ -104,8 +122,11 @@ class login extends StatelessWidget {
                             gravity: ToastGravity.SNACKBAR,
                             backgroundColor: Colors.amberAccent,
                             textColor: Colors.pink);
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => SecondPage()));
-                      }else{
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SecondPage()));
+                      } else {
                         Fluttertoast.showToast(
                             msg: 'Please give a valid ID and Pass',
                             toastLength: Toast.LENGTH_LONG,
@@ -123,8 +144,9 @@ class login extends StatelessWidget {
                 height: 40,
               ),
               InkWell(
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => signup()));
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => signup()));
                 },
                 child: Text('Have an account? Sign up',
                     style: GoogleFonts.rubik(
@@ -136,5 +158,17 @@ class login extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  getsharpref() async{
+
+    final pref = await SharedPreferences.getInstance();
+
+    setState(() {
+      user_name = pref.getString('user_name') ?? '';
+      pass = pref.getString('pass') ?? '';
+    });
+
+
   }
 }
